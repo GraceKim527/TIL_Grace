@@ -1,5 +1,6 @@
 # 목차
 - [레이아웃을 구성하는 CSS 박스 모델](#cssbox)
+- [이미지와 그라데이션 효과로 배경 꾸미기](#background)
 
 # 레이아웃을 구성하는 CSS 박스 모델 <a id="cssbox"></a>
 ## 1. CSS와 박스 모델
@@ -96,3 +97,92 @@ float속성이 더 이상 유효하지 않게 하려면 clear을 사용한다.
 - relative: 위치값을 지정할 수 있다는 점을 제외하면 static과 같다.
 - absolute: relative값을 사용한 상위 요소를 기준으로 위치를 지정해 배치한다.
 - fixed: 브라우저 창 기준으로 위치를 지정해 배치한다.
+
+
+# 이미지와 그라데이션 효과로 배경 꾸미기 <a id="background"></a>
+## 배경색과 배경 범위 지정하기
+### 배경색을 지정하는 background-color 속성
+16진수나 rgb값, 색상 이름을 사용하여 지정한다.
+````css
+.color {
+    background-color: #008000;
+    background-color: rgb(0, 128, 0);
+    background-color: green;
+}
+````
+
+### 배경색의 적용 범위를 조절하는 background-clip 속성
+````css
+.bc {
+    background-clip: border-box;
+    background-clip: padding-box;
+    background-clip: content-box;
+}
+````
+- border-box: 박스 모델의 가장 외각인 테두리까지 적용한다.(기본값)
+- padding-box: 박스 모델에서 테두리를 뺀 패딩 범위까지 적용한다.
+- content-box: 박스 모델에서 내용 부분에만 적용한다.
+
+## 배경 이미지 지정하기
+### 웹 요소에 배경 이미지를 넣는 background-image 속성
+````
+background-image: url('이미지 경로')
+````
+이미지 파일은 .jpg, .gif, .png 형식을 사용한다.
+
+### 배경 이미지의 반복 방법을 지정하는 background-repeat 속성
+- repeat: 브라우저 화면 가득 찰 때까지 가로와 세로로 반복한다.(기본값)
+- repeat-x: 브라우저 화면 너비에 가득 찰 때까지 반복한다.
+- repeat-y: 브라우저 화면 높이에 가득 찰 때까지 반보갛낟.
+- no-repeat: 한 번만 표시하고 반복하지 않는다.
+
+### 배경 이미지의 위치를 조절하는 background-position 속성
+````
+background-position: <수평 위치> <수직 위치>;
+수평 위치 : left | center | right | <백분율> | <길이 값>
+수직 위치 : top | center | bottom | <백분율> | <길이 값>
+````
+
+### 배경 이미지의 적용 범위를 조절하는 background-origin 속성
+- content-box: 박스 모델에서 내용 부분만 배경 이미지를 표시한다.(기본값)
+- padding-box: 박스 모델에서 패딩까지 배경 이미지를 표시한다.
+- border-box: 박스 모델에서 테두리까지 배경 이미지를 표시한다.
+
+### 배경 이미지를 고정하는 background-attachment 속성
+- scroll: 화면을 스크롤하면 배경 이미지도 스크롤된다.(기본값)
+- fixed: 화면을 스크롤하면 배경 이미지는 고정되고 내용만 스크롤된다.
+
+### 배경 이미지 크기를 조절하는 background-size 속성
+- auto: 배경 이미지 크기만큼 표시한다.(기본값)
+- contain: 요소 안에 배경 이미지가 다 들어오도록 이미지 확대 및 축소
+- cover: 배경 이미지로 요소를 모두 덮도록 이미지 확대 및 축소
+- <크기> 및 <백분율>
+
+## 그러데이션 효과로 배경 꾸미기
+### 선형 그러데이션
+````
+linear-gradient(to <방향> | <각도>, <색상 중지점> [<색상 중지점>, ...]);
+````
+#### 방향
+왼쪽에서 오른쪽 : to right <br>
+왼쪽 아래에서 오른쪽 위 : to right top || to top right 등으로 사용된다.
+
+#### 각도
+맨 윗부분이 0deg, 시계 방향으로 회전하면서 90deg, 180deg가 된다.
+
+#### 색상 중지점
+그라데이션에서 바뀌는 색을 색상 중지점이라 한다.
+
+### 원형 그러데이션
+````
+radial-gradient(<모양> <크기> at <위치>, <색상 중지점>, [<색상 중지점>, ......])
+````
+
+#### 모양
+원형(circle), 타원형(ellipse)이다.
+
+#### 크기 
+
+#### 위치
+at 키워드를 통해 원의 중심을 다르게 나타낼 수 있다.<br>
+위치 속성값은 키워드(left, center, right 중 하나 | top, center, bottom )
