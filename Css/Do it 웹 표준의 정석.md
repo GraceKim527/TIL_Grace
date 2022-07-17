@@ -2,6 +2,7 @@
 - [레이아웃을 구성하는 CSS 박스 모델](#cssbox)
 - [이미지와 그라데이션 효과로 배경 꾸미기](#background)
 - [CSS 고급 선택자](#selector)
+- [트랜지션과 애니메이션](#transition)
 
 # 레이아웃을 구성하는 CSS 박스 모델 <a id="cssbox"></a>
 ## 1. CSS와 박스 모델
@@ -414,4 +415,130 @@ li.new::after {
   margin: 0 10px;
   border-radius: 2px;
 }
+````
+# 트랜지션과 애니메이션 <a id="transition"></a>
+## 변형 알아보기
+### transform과 변형 함수
+````css
+.photo { transform: translate(50px, 100px);}
+````
+x축으로 50px, y축으로 100px 이동한다.
+
+#### 2차원 변형과 3차원 변형
+**2차원 변형**은 웹 요소를 평면에서 변형한다. <br>
+x축은 오른쪽으로 갈수록 값이 커지고, y축은 아래로 내려갈수록 값이 커진다. <br>
+**3차원 변형**은 x축과 y축에 원근감을 주는 z축을 추가해서 변형한다. <br>
+z축은 앞뒤로 이동하며, 보는 사람 쪽으로 다가올수록 값이 커지고, 뒤로 갈수록 값이 작아진다.
+
+#### 2차원 변형 함수
+- translate(tx, ty) : 지정한 크기만큼 x축, y축으로 이동한다.
+- translateX(tx) : 지정한 크기만큼 x축으로 이동한다.
+- translateY(ty) : 지정한 크기만큼 y축으로 이동한다.
+- scale(sx, sy) : 지정한 크기만큼 x축과 y축으로 확대, 축소한다.
+- scale(sx) : 지정한 크기만큼 x축으로 확대, 축소한다.
+- scale(sy) : 지정한 크기만큼 y축으로 확대, 축소한다.
+- rotate(각도) : 지정한 각도만큼 회전한다.
+- skew(ax, ay) : 지정한 각도만큼 x축과 y축으로 왜곡한다.
+- skewX(ax) : 지정한 각도만큼 x축으로 왜곡한다.
+- skewY(ay) : 지정한 각도만큼 y축으로 왜곡한다.
+
+#### 3차원 변형 함수
+- translate3d(tx, ty, tz) : 지정한 크기만큼 x축, y축, z축으로 이동한다.
+- translateZ(tz) : 지정한 크기만큼 z축으로 이동한다.
+- scaled3d(sx, sy, sz) : 지정한 크기만큼 x축, y축, z축으로 확대, 축소한다.
+- scaleZ(sz) : 지정한 크기만큼 z축으로 확대, 축소한다.
+- rotate(rx, ry, 각도) : 지정한 각도만큼 회전한다.
+- rotate3d(rx, ry, rz, 각도) : 지정한 각도만큼 회전한다.
+- rotateX(각도) : 지정한 각도만큼 x축으로 회전한다.
+- rotateY(각도) : 지정한 각도만큼 y축으로 회전한다.
+- rotateZ(각도) : 지정한 각도만큼 z축으로 회전한다.
+- perspective(길이) : 입체적으로 보일 수 있도록 깊잇값을 지정한다.
+
+## 트랜지션 알아보기
+### 트랜지션이란
+**트랜지션**은 웹 요소의 배경색을 바꾸거나 도형의 테두리를 사각형에서 원형으로 바꾸는 것처럼 스타일 속성이 바뀌는 것을 말한다. <br>
+
+### 트랜지션과 속성
+#### 트랜지션의 대상을 지정하는 transition-property 속성
+````
+transition-property: all | none | < 속성 이름 >
+````
+- all : 요소의 모든 속성이 트랜지션 대상이 된다. (기본값)
+- none : 트랜지션을 하는 동안 아무 속성도 바뀌지 않는다.
+- 속성 이름 : 트랜지션 효과를 적용할 속성을 지정한다.
+
+#### 트랜지션의 진행 시간 지정하는 transition-duration 속성
+````
+transition-duration: <시간>
+````
+
+#### 트랜지션의 속도 곡선을 지정하는 transition-timing-function 속성
+````
+transition-timing-function: linear | ease | ease-in | ease-out | ease-in-out | cubic-bezier(n, n, n, n)
+````
+- ease : 처음에는 천천히 시작하고 빨라지다가 마지막엔 천천히 끝난다. (기본값)
+- linear : 시작부터 끝까지 똑같은 속도로 진행한다.
+- ease-in : 느리게 시작한다.
+- ease-out : 느리게 끝낸다.
+- ease-in-out: 느리게 시작하고 느리게 끝낸다.
+- cubic-bezier(n, n, n, n): 베지에 함수를 정의해서 사용한다. n값은 0~1 사이만 사용할 수 있다. 
+
+#### 트랜지션의 지연 시간을 설정하는 transition-delay 속성
+지정한 시간만큼 기다렸다가 트랜지션 시작(초(s), 밀리초(ms), 기본값 (0))
+````
+transition-delay: <시간>
+````
+
+#### 트랜지션의 속성을 한꺼번에 표기하는 transition 속성
+````
+transition: <transition-property값> | <transition-duration값> | <transition-timing-function값> | <transition-delay값>
+````
+
+## 애니메이션 알아보기
+### CSS 애니메이션에서 사용하는 속성
+키프레임 :: 애니메이션 중간에 스타일이 바뀌는 시점
+
+#### 애니메이션의 지점과 이름을 설정하는 @keyframes 속성, animation-name 속성 
+````
+@keyframes <이름> {
+  <선택자> { <스타일 >}
+}
+````
+
+어떤 애니메이션을 사용하는 지 이름으로 구분해야 한다. 
+````
+animation-name: <키프레임 이름> | none
+````
+@keyframes 속성에서 사용하는 선택자는 스타일 속성값이 바뀌는 지점을 가리킨다. <br>
+시작, 끝을 각각 0%, 100%으로 놓고, 중간에 여러 프레임을 설정해도 된다. 
+
+#### 애니메이션의 실행 시간을 지정하는 animation-duration 속성
+````
+animation-duration: <시간> 
+````
+
+#### 애니메이션의 방향을 지정하는 animation-direction 속성
+````
+animation-direction: normal | reverse | alternate | alternate-reverse
+````
+- normal: 애니메이션을 from에서 to로 진행한다. (기본값)
+- reverse: 애니메이션을 to에서 from으로, 원래 방향과는 반대로 진행한다.
+- alternate: 홀수 번째는 normal로, 짝수 번째는 reverse로 진행한다.
+- alternate-reverse: 홀수 번째는 reverse로, 짝수 번째는 normal로 진행한다.
+
+#### 반복 휫수를 지정하는 animation-iteration-count 속성
+````
+animation-iteration-count: < 숫자 > | infinite
+````
+- 숫자 : 애니메이션의 반복 휫수를 정한다.
+- infinite : 애니메이션을 무한 반복한다. 
+
+#### 애니메이션의 속도 곡선을 지정하는 animation-timing-function 속성
+````
+animation-timing-function: linear | ease | ease-in | ease-out | ease-in-out | cubic_bezier(n, n, n, n)
+````
+
+#### 애니메이션의 속성을 한꺼번에 표기하는 animation속성
+````
+animation: <animation-name> | <animation-duration> | <animation-timing-function> | <animation-delay> | <animation-iteraion-count> | <animation-direction>
 ````
