@@ -3,6 +3,7 @@
 - [이미지와 그라데이션 효과로 배경 꾸미기](#background)
 - [CSS 고급 선택자](#selector)
 - [트랜지션과 애니메이션](#transition)
+- [반응형 웹과 미디어 쿼리](#mediaquery)
 
 # 레이아웃을 구성하는 CSS 박스 모델 <a id="cssbox"></a>
 ## 1. CSS와 박스 모델
@@ -542,3 +543,78 @@ animation-timing-function: linear | ease | ease-in | ease-out | ease-in-out | cu
 ````
 animation: <animation-name> | <animation-duration> | <animation-timing-function> | <animation-delay> | <animation-iteraion-count> | <animation-direction>
 ````
+
+# 반응형 웹과 미디어 쿼리 <a id="mediaquery"></a>
+## 반응형 웹 알아보기
+### 모바일 기기를 위한 뷰포트
+**뷰포트** : 여러 화면에서 실제 내용이 표시되는 영역
+````html
+<meta name="viewport" content="속성1=값", "속성2=값", ......">
+````
+종류 | 설명 | 사용 가능 값 | 기본값 |
+---- | ---- | ------------ | ------ |
+width | 뷰포트 너비 | device-width 또는 크기 | 브라우저 기본값 |
+height | 뷰포트 높이 | device-height 또는 크기 | 브라우저 기본값 |
+user-scalable | 확대, 축소 가능 여부 | yes 또는 no | yes |
+initial-scale | 초기 확대, 축소 값 | 1 ~ 10 | 1 |
+
+**가장 많이 사용하는 뷰포트 속성**
+````html
+<meta name="viewport" content="width=device-width, initial-scale=1">
+````
+
+### 뷰포트 단위
+- vw(viewport width): 1vw는 뷰포트 너비의 1%와 같다.
+- vh(viewport height): 1vh는 뷰포트 높이의 1%와 같다.
+- vmin(viewport minimum): 뷰포트의 너비와 높이 중에서 작은 값의 1%와 같다.
+- vmax(viewport maximum): 뷰포트의 너비와 높이 중에서 큰 값의 1%와 같다.
+
+
+## 미디어 쿼리 알아보기
+### 미디어 쿼리
+-> 사이트에 접속하는 장치에 따라 특정한 CSS 스타일을 사용하는 방법
+
+````
+@media [only | not] 미디어 유형 [and 조건] * [and 조건]
+````
+- only: 미디어 쿼리를 지원하지 않는 웹 브라우저에서는 미디어 쿼리를 무시하고 실행을 하지않는다.
+- not: not 다음에 지정하는 미디어 유형을 제외한다.
+- and: 조건을 여러 개 연결해서 추가 가능하다.
+
+#### 미디어 유형의 종류
+- all: 모든 미디어 유형
+- print: 인쇄 장치
+- screen: 컴퓨터 스크린, (스마트폰 스크린도 포함)
+- tv: 음성과 영상이 동시에 출력되는 TV에서 사용 
+- aural: 음성 합성 장치
+- braille: 점자 표시 장치
+- handheld: 패드(pad)
+- projection: 프로젝터
+- tty: 디스플레이 기능이 제한된 장치에 맞는 유형, 이런 장치에서는 px 사용 불가
+- embossed: 점자 프린터
+
+#### 웹 문서의 가로 너비와 세로 높이 속성
+실제 웹 문서 내용이 화면에 나타나는 영역을 뷰포트라고 하는데, 뷰포트의 너비와 높이를 미디어의 쿼리 조건으로 사용가능. <br>
+- width, height: 웹 페이지의 가로 너비, 세로 높이
+- min-width, min-height: 웹 페이지의 최소 너비, 최소 높이
+- max-width, max-height: 웹 페이지의 최대 너비, 최대 높이
+
+#### 단말기의 가로 너비와 세로 높이 속성
+대부분의 단말기 해상도와 실제 브라우저의 너비가 다르다. 
+- device-width, device-height: 단말기의 가로 너비, 세로 높이를 지정
+- min-device-width, min-device-height: 단말기의 최소 너비, 최소 높이를 지정
+- max-device-width, max-device-height: 단말기의 최대 너비, 최대 높이를 지정
+
+#### 화면 회전 속성 
+스마트폰이나 태블릿에서는 화면을 세로로 보거나 가로로 돌려서 볼 수가 있는데, 이때 미디어 쿼리에서 **orientation** 속성을 사용하면 기기의 방향을 확인 가능하다.<br>
+가로 모드는 landscape, 세로 모드는 portrait이다.
+- orientation: portrait :: 세로 모드로 지정
+- orientation: landscape :: 가로 모드로 지정
+
+#### 미디어 쿼리의 중단점 
+**중단점** : 미디어 쿼리를 작성할 때 화면 크기에 따라 서로 다른 css를 적용할 분기점<br>
+주로 모바일, 태블릿, 데스크톱 정도로만 구분하면 좋다. <br>
+**모바일 퍼스트 기법** : 모바일을 먼저 고려하여 미디어 쿼리를 작성하는 것
+- 스마트폰 : 모바일 페이지는 미디어 쿼리를 사용하지 않고 기본 css로 작성한다. 만약 스마트폰의 방향까지 고려한다면 min-width의 세로와 가로를 각각 portrait 320px, landscape 480px로 지정한다.
+- 태블릿 : 세로 크기가 768px이상이면 태블릿으로 지정한다. 가로 크기는 데스크톱과 똑같이 1024px 이상으로 지정한다.
+- 데스크톱 : 화면 크기가 1024px이상이면 데스크톱으로 설정한다. 
