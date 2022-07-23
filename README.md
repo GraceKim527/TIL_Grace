@@ -1,4 +1,5 @@
 # Today I Learned - Grace Wiki
+> 매일매일 작은 것 사소한 것 하나라도 작성해가는 나만의 공부책
 
 ## Algorithm
 * [그리디 알고리즘 with Python](https://github.com/GraceKim527/TIL_Grace/blob/main/Algorithm/Greedy.md)
