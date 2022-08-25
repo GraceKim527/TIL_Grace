@@ -4,6 +4,9 @@
 
 ## Algorithm
 * [그리디 알고리즘 with Python](https://github.com/GraceKim527/TIL_Grace/blob/main/Algorithm/Greedy.md)
+* [구현 알고리즘 with Python](https://github.com/GraceKim527/TIL_Grace/blob/main/Algorithm/Implementation.md)
+* [BFS/DFS with Python](https://github.com/GraceKim527/TIL_Grace/blob/main/Algorithm/bfs_dfs.md)
+
 
 ## CSS
 * [Do it 웹 표준의 정석](https://github.com/GraceKim527/TIL_Grace/blob/main/Css/Do%20it%20%EC%9B%B9%20%ED%91%9C%EC%A4%80%EC%9D%98%20%EC%A0%95%EC%84%9D.md)
