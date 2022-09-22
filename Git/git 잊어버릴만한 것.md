@@ -11,3 +11,8 @@ $ git commit --amend --no-edit --date "$(date)"
 $ git commit --amend --no-edit --date "Fri 18 Feb 2022 01:35:10 KST"
 ````
 > 요일, 일, 월, 년도, 시각, 한국시간기준 순서
+
+## git 강제 푸쉬
+````
+$ git push -u origin master --force
+````
