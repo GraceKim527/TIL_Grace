@@ -17,3 +17,29 @@ $ git commit --amend --no-edit --date "Fri 18 Feb 2022 01:35:10 KST"
 ````
 $ git push -u origin master --force
 ````
+
+## git reset: 커밋 취소 <a id="3"></a>
+````
+$ git log --oneline
+````
+### 깃의 로그를 확인
+
+````
+$ git reset --hard 커밋
+````
+
+### Untracked file들 삭제
+````
+# 삭제 대상(Untracked file) 목록 확인
+$ git clean -n
+````
+
+````
+# Untracked file 파일 삭제
+$ git clean -f
+````
+
+### 바로 이전 상태를 돌리기
+````
+$ git reset --hard HEAD^
+````
