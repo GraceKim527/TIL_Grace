@@ -13,3 +13,6 @@
 
 - [핀터레스트](https://www.pinterest.co.kr/)
 > 디자인 뿐 아니라 각종 자료 및 소스가 정말 다양하게 있다.
+
+## CSS Reference
+- [box shadow](https://getcssscan.com/css-box-shadow-examples)
