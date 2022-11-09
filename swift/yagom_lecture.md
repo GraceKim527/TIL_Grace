@@ -356,5 +356,45 @@ ex) `optionalValue = optionalValue +1`
 
 ## 옵셔널 추출(optional unwrapping)
 - 옵셔널의 값을 꺼내오는 방법 중 하나( nil 체크 + 안전한 값 추출 )
-- 옵셔널 타입은 보호막이 하나 씩 있는다고 생각
+- 옵셔널 타입은 보호막이 하나씩 있는다고 생각( 값이 있을 수도 있고, 없을 수도 있다. 보호막에 값이 있는지 물어보는 느낌)
+````swift
+func printName(_ name: String) {
+    print(name)
+}
+var myName: String! = nil //컴파일 오류 String과 String!은 다름
+````
 
+## 구조체
+````swift
+struct Sample {
+    var mutableProperty: Int = 100 // 가변 프로퍼티
+    let immutableProperty: Int = 100 // 불변 프로퍼티
+
+    static var typeProperty: Int = 100 //타입 프로퍼티
+
+    // 인스턴스 메서드
+    func instanceMethod() {
+        print("instance method")
+    }
+
+    // 타입 메서드
+    static func typeMethod(){
+        print("type method")
+    }
+}
+````
+
+- 구조체 사용
+
+````swift
+// 가변 인스턴스
+var mutable: Sample = Sample()
+
+let immutable: Sample = Sample()
+
+
+Sample.typeProperty = 300
+Sample.typeMethod() // type method
+
+
+````
