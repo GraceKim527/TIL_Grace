@@ -392,9 +392,220 @@ var mutable: Sample = Sample()
 
 let immutable: Sample = Sample()
 
-
+// 타입 프로퍼티 및 메서드
 Sample.typeProperty = 300
 Sample.typeMethod() // type method
 
+````
+
+- 예시
+````swift
+struct Student {
+    var name: String = "unknown"
+    var `class`: String = "Swift" // class는 기존키워드이기 때문에 따로 사용하고 싶으면 `으로 묶어주면된다.
+    
+    static func selfIntroduce(){ //타입 메서드
+        print("학생타입입니다")
+    }
+    
+    func selfIntroduce(){
+        print("저는 \(self.class)반 \(name)입니다")
+    }
+}
+
+Student.selfIntroduce()
+
+var yagom: Student = Student()
+yagom.name = "yagom"
+yagom.class = "스위프트"
+yagom.selfIntroduce() // 저는 스위프트반 yagom입니다.
+
+let jina: Student = Student()
+
+//jina.name = "jina" -> 불변 프로퍼티이므로 불가
+jina.selfIntroduce()
+
 
 ````
+
+## 클래스
+- 사용 방법
+````swift
+class Sample {
+    var mutableProperty: Int = 100 // 가변 프로퍼티
+    let immutableProperty: Int = 100 // 불변 프로퍼티
+    static var typeProperty: Int = 100 // 타입 프로퍼티
+    
+    // 인스턴스 메서드
+    func instanceMethod() {
+        print("instance method")
+    }
+    
+    // 타입 메서드
+    // 재정의 불가 타입 메서드 - static
+    static func typeMethod() {
+        print("type method - static")
+    }
+    
+    // 재정의 가능 타입 메서드 - class
+    class func classMethod() {
+        print("type method - class")
+    }
+}
+
+
+````
+
+- 클래스의 사용
+````swift
+// MARK: 클래스 사용
+var mutableReference: Sample = Sample()
+
+mutableReference.mutableProperty = 200
+
+let immutableReference: Sample = Sample()
+immutableReference.mutableProperty = 200 // 불변형이여도 내부 프로퍼티 값은 변경할 수 있다.
+
+// 타입 프로퍼티 및 메서드
+Sample.typeProperty = 300
+Sample.typeMethod() // type method
+````
+
+**구조체와는 다르게 기변 프로퍼티를 let으로 선언했음에도 프로퍼티를 새로 값을 할당해도 사용이 가능하다**
+
+## 열거형
+- 사용
+
+````swift
+// MARK: 사용
+enum Weekday {
+    case mon
+    case tue
+    case wed
+    case thu, fri, sat, sun
+}
+
+var day: Weekday = Weekday.mon // day의 타입으로 지정
+day = .tue // 이렇게 축약해서 사용 가능
+
+print(day)
+
+switch day {
+case .mon, .tue, .wed, .thu:
+    print("평일입니다")
+case Weekday.fri:
+    print("불금 파티 !!")
+case .sat, .sun:
+    print("신나는 주말!!")
+}
+````
+- 케이스를 전부 구현하면 default를 구현할 필요가 없지만, 하나라도 빠진다면 구현해야한다.
+
+### 원시값
+````swift
+// C언어의 enum처럼 정수값을 가질 수 있다
+// rawValue 사용
+// case별로 다른 값을 가져야 한다
+
+enum Fruit: Int {
+case apple = 0;
+case grape = 1; // 1을 지우더라도 1씩늘어나서 자동으로 값이 들어간다.
+    case peach
+    
+}
+
+print("Fruit.peach.rawValue == \(Fruit.peach.rawValue)")
+// Fruit.peach.rawValue == 2
+
+// 정수 타입 뿐 아니라
+// Hasshable 프로토콜을 따르는 모든 타입이 원시값의 타입 가능
+
+enum School: String {
+    case elementary = "초등"
+    case middle = "중등"
+    case `high` = "고등"
+    case university
+}
+
+print("School.middle.rawValue == \(School.middle.rawValue)")
+
+print("School.university.rawValue == \(School.university.rawValue)")
+// 이 경우 이름 그대로 나온다.
+````
+
+- 원시값을 통한 초기화
+    - rawValue를 통해 초기화 가능
+    - rawValue가 case에 해당하지 않을 수 있기 때문에
+    - rawValue를 통한 초기화 한 인스턴스는 옵셔널 타입
+
+````swift 
+let apple: Fruit? = Fruit(rawValue: 0)
+// let apple: Fruit = Fruit(rawValue: 0)
+
+if let orange: Fruit = Fruit(rawValue: 5){
+    print("rawValue 5에 해당하는 케이스는 \(orange)입니다")
+} else {
+    print("rawValue 5에 해당하는 케이스가 없습니다")
+}
+````
+
+- 메서드 추가 가능 
+````swift
+enum Month {
+    case dec, jan, feb
+    case mar, apr, may
+    case jun, jul, aug
+    case sep, oct, nov
+    
+    func printMessage() {
+        switch self {
+        case .mar, .apr, .may:
+            print("봄")
+        case .jun, .jul, .aug:
+            print("여름")
+        case .sep, .oct, .nov:
+            print("가을")
+        case .dec, .jan, .feb:
+            print("겨울")
+        }
+    }
+}
+
+Month.mar.printMessage()
+
+````
+
+## 값 타입과 참조 타입
+### Class
+- 단일상속, 전통적인 OOP 관점에서의 클래스
+- (인스턴스/타입) 메서드
+- (인스턴스/타입) 프로퍼티
+- **참조 타입**
+- 애플 프레임워크의 대부분 큰 뼈대는 모두 클래스로 구성
+
+### 구조체
+- C 언어 등의 구조체보다 다양한 기능
+- (인스턴스/타입) 메서드
+- (인스턴스/타입) 프로퍼티
+- 상속 불가
+- **값 타입**
+- Swift의 큰 뼈대는 모두 구조체로 구성
+
+### 열거형
+- 상속 불가
+- **값 타입**
+- (인스턴스/타입) 메서드
+- (인스턴스/타입) 프로퍼티
+- 열거형 자체가 하나의 데이터 타입, 케이스 하나하나 전부 유의미한 값
+
+### 구조체는 언제 사용하는 가?
+- 연관된 몇몇의 값들을 모아서 하나의 데이터타입으로 표현하고 싶을 때
+- 참조가 아닌 복사를 원할 때
+- 자신을 상속할 필요가 없거나, 자신이 다른 타입을 **상속받을 필요가 없을 때**
+- 애플 프레임워크에서 프로그래밍 할 때는 주로 클래스를 많이 사용
+
+### Value vs Reference
+- Value 
+    - 데이터를 전달할 때 값을 복사하여 전달
+- Reference 
+    - 데이터를 전달할 때 값의 메모리 위치 전달
