@@ -53,3 +53,16 @@ heapq.heappop([힙 이름])
 ````python
 heapq.heapify([리스트 이름])
 ````
+
+## isdigit() 메서드
+str.isdigit() -> 문자열이 '숫자'로만 이루어진 것인지 확인하는 함수
+- 문자가 하나라도 있다면 False
+- 모든 문자가 다 숫자라면 True
+
+### 다음과 같이 사용 가능
+````python
+str.isdigit("판단하고자 하는 문자열")
+"판단하고자 하는 문자열".isdigit()
+
+
+````
