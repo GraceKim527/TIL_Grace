@@ -1,6 +1,7 @@
 # 코딩테스트용 파이썬 팁 정리
 - [문자열에서 특정 문자 제거 strip()](#strip)
 - [자료구조 힙 heapq 모듈](#heapq)
+- [반복되는 데이터를 처리하는 기능을 포함하는 라이브러리 itertools](#itertools)
 
 ## strip() - 문자열에서 특정 문자 제거 <a id="strip"></a>
 ### strip([chars])
@@ -65,4 +66,65 @@ str.isdigit("판단하고자 하는 문자열")
 "판단하고자 하는 문자열".isdigit()
 
 
+````
+
+## itertools <a id="itertools"></a>
+파이썬에서 반복되는 데이터를 처리하는 기능을 포함하고 있는 라이브러리
+
+- permutations (순열)
+````python
+from itertools import permutations
+data = ['A', 'B', 'C']
+result = list(permutations(data, 3))
+
+print(result)
+````
+
+````
+ABC, ACB, BAC, BCA, CAB, CBA
+````
+
+- combinations (조합)
+````python
+from itertools import combinations
+data = ['A', 'B', 'C']
+result = list(combinations(data, 2))
+
+print(result)
+````
+
+````
+AB, AC, BC
+````
+
+- product
+    - permutations와 같이 리스트와 같은 iterable 객체에서 r개의 데이터를 뽑아 일렬로 나열하는 모든 경우(순열)을 계산. 원소를 중복하여 뽑는다.
+
+````python
+from itertools import product
+
+data = ['A', 'B', 'C']
+result = list(product(data, repeat=2)) # 2개를 뽑는 모든 순열 구하기(중복 허용)
+
+print(result)
+````
+
+````
+AA, AB, AC, BA, BB, BC, CA, CB, CC
+````
+
+- combinations_with_replacement
+    - combinations와 같이 리스트와 같은 iterable 객체에서 r개의 데이터를 뽑아 순서를 고려하지 않고 나열하는 모든 경우(조합)를 계산.
+
+````python
+from itertools import combinations_with_replacement
+
+data = ['A', 'B', 'C']
+result = list(combinations_with_replacement(data, 2))
+
+print(result)
+````
+
+````
+AA, AB, AC, BB, BC, CC
 ````
