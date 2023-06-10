@@ -2,6 +2,7 @@
 - [문자열에서 특정 문자 제거 strip()](#strip)
 - [자료구조 힙 heapq 모듈](#heapq)
 - [반복되는 데이터를 처리하는 기능을 포함하는 라이브러리 itertools](#itertools)
+- [collections 모듈을 이용한 Counter](#counter)
 
 ## strip() - 문자열에서 특정 문자 제거 <a id="strip"></a>
 ### strip([chars])
@@ -127,4 +128,47 @@ print(result)
 
 ````
 AA, AB, AC, BB, BC, CC
+````
+
+## collections 모듈의 Counter사용법 <a id="counter"></a>
+````python
+from collections import Counter
+Counter(["hi", "hey", "hi", "hi", "hello", "hey"])
+Counter({'hi': 3, 'hey': 2, 'hello': 1})
+````
+
+### 사전처럼 사용
+````python
+counter["l"] += 1
+counter["h"] -= 1
+counter
+
+if "o" in counter:
+    print("o in counter")
+
+del counter["o"]
+
+if "o" not in counter:
+    print("o not in counter")
+````
+
+### 데이터의 개수가 많은 순으로 정렬하는 most_common() 메서드
+````python
+from collections import Counter
+
+Counter('hello world').most_common()
+
+[('l', 3), ('o', 2), ('h', 1), ('e', 1), (' ', 1), ('w', 1), ('r', 1), ('d', 1)]
+````
+
+이외에도 산술연산도 가능하다.
+````
+counter1 = Counter(["A", "A", "B"])
+counter2 = Counter(["A", "B", "B"])
+
+counter1 + counter2
+Counter({'A': 3, 'B': 3})
+
+counter1 - counter2
+Counter({'A': 1})
 ````
