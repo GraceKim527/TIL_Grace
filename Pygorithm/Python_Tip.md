@@ -3,6 +3,7 @@
 - [자료구조 힙 heapq 모듈](#heapq)
 - [반복되는 데이터를 처리하는 기능을 포함하는 라이브러리 itertools](#itertools)
 - [collections 모듈을 이용한 Counter](#counter)
+- [zip 내장 함수](#zip)
 
 ## strip() - 문자열에서 특정 문자 제거 <a id="strip"></a>
 ### strip([chars])
@@ -172,3 +173,39 @@ Counter({'A': 3, 'B': 3})
 counter1 - counter2
 Counter({'A': 1})
 ````
+
+## zip 내장 함수 <a id="zip"></a>
+### zip 기본 문법
+````python
+>>> numbers = [1, 2, 3]
+>>> letters = ["A", "B", "C"]
+>>> for pair in zip(numbers, letters):
+...     print(pair)
+...
+(1, 'A')
+(2, 'B')
+(3, 'C')
+````
+
+### 병렬 처리 
+````python
+>>> for number, upper, lower in zip("12345", "ABCDE", "abcde"):
+...     print(number, upper, lower)
+...
+1 A a
+2 B b
+3 C c
+4 D d
+5 E e
+````
+
+### unzip
+````python
+>>> numbers = (1, 2, 3)
+>>> letters = ("A", "B", "C")
+>>> pairs = list(zip(numbers, letters))
+>>> print(pairs)
+[(1, 'A'), (2, 'B'), (3, 'C')]
+````
+
+- 함수로 넘기는 인자의 길이가 서로 다를 경우, **가장 짧은 인자**를 기준으로 엮이고 나머지 부분은 버려지므로 이 점 유의하자.
