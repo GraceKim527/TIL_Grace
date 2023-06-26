@@ -4,6 +4,7 @@
 - [반복되는 데이터를 처리하는 기능을 포함하는 라이브러리 itertools](#itertools)
 - [collections 모듈을 이용한 Counter](#counter)
 - [zip 내장 함수](#zip)
+- [알파벳과 인덱스를 이용해야하는 문제](#alpha)
 
 ## strip() - 문자열에서 특정 문자 제거 <a id="strip"></a>
 ### strip([chars])
@@ -209,3 +210,23 @@ Counter({'A': 1})
 ````
 
 - 함수로 넘기는 인자의 길이가 서로 다를 경우, **가장 짧은 인자**를 기준으로 엮이고 나머지 부분은 버려지므로 이 점 유의하자.
+
+## 알파벳과 인덱스를 이용해야 하는 문제  <a id="alpha"></a>
+
+```python
+def solution(s, skip, index):
+    answer = ""
+    alpha = "abcdefghijklmnopqrstuvwxyz" # 알파벳
+    
+    for ch in skip: # ch => skip의 문자 하나하나
+        if ch in alpha:
+            alpha = alpha.replace(ch, "") # 알파벳 안에 skip 문자들 제거
+    
+    for i in s:
+        change = alpha[(alpha.index(i) + index) % len(alpha)] # s의 문자 인덱스 + index를 alpha의 길이로 나눈 나머지를 알파벳으로 변환
+        answer += change
+    
+    return answer
+```
+
+- 알파벳의 인덱스와 인덱스가 끝난 후 다시 처음으로 돌아와야 할 때 쓰면 좋을만한 구문. 
