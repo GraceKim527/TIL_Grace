@@ -5,6 +5,7 @@
 - [collections 모듈을 이용한 Counter](#counter)
 - [zip 내장 함수](#zip)
 - [알파벳과 인덱스를 이용해야하는 문제](#alpha)
+- [파이썬 대문자 소문자](#uplow)
 
 ## strip() - 문자열에서 특정 문자 제거 <a id="strip"></a>
 ### strip([chars])
@@ -230,3 +231,30 @@ def solution(s, skip, index):
 ```
 
 - 알파벳의 인덱스와 인덱스가 끝난 후 다시 처음으로 돌아와야 할 때 쓰면 좋을만한 구문. 
+
+## 파이썬 대문자 소문자 <a id="uplow"></a>
+### string.upper()
+- string : 바꾸고자 하는 문자열의 객체
+- 반환형 : 모든 문자열이 대문자로 바뀐 문자열
+
+````python
+s = 'abcDef'.upper()
+print('s : ' + s) # s : ABCDEF
+````
+
+### string.lower() 
+- string : 바꾸고자 하는 문자열 객체
+- 반환형 : 모든 문자열이 소문자로 바뀐 문자열
+
+````python
+s = "This is Programming"
+print('s : '+s) # s : this is programming
+````
+
+### string.isupper()
+- 함수 : string 객체 내부에 있는 모든 문자가 대문자인지 검사하는 함수
+- 반환형 : Bool(True, False)
+
+### string.islower()
+- 함수 : string 객체 내부에 있는 모든 문자가 소문자인지 검사하는 함수
+- 반환형 : Bool(True, False)
