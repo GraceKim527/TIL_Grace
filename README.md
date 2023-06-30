@@ -2,15 +2,6 @@
 > 매일매일 작은 것 사소한 것 하나라도 작성해가는 나만의 공부책
 > 최대한 자유롭게 쓰려고 노력 중
 
-## Algorithm
-* [그리디 알고리즘 with Python](https://github.com/GraceKim527/TIL_Grace/blob/main/Algorithm/Greedy.md)
-* [구현 알고리즘 with Python](https://github.com/GraceKim527/TIL_Grace/blob/main/Algorithm/Implementation.md)
-* [BFS/DFS with Python](https://github.com/GraceKim527/TIL_Grace/blob/main/Algorithm/bfs_dfs.md)
-* [이진 탐색 with Python](https://github.com/GraceKim527/TIL_Grace/blob/main/Algorithm/Binary_Search.md)
-* [에라토스테네스의 체 with Python](https://github.com/GraceKim527/TIL_Grace/blob/main/Algorithm/Sieve_of_Eratosthenes.md)
-* [정렬 알고리즘 with Python](https://github.com/GraceKim527/TIL_Grace/blob/main/Algorithm/sort.md)
-* [코딩테스트용 Python Tip](https://github.com/GraceKim527/TIL_Grace/blob/main/Algorithm/python_tip.md)
-
 ## Computer Structure
 * [컴퓨터구조론](https://github.com/GraceKim527/TIL_Grace/blob/main/Computer%20Structure/%EC%BB%B4%ED%93%A8%ED%84%B0%EA%B5%AC%EC%A1%B0%EB%A1%A0.md)
 
@@ -33,5 +24,17 @@
 ## OS
 * [운영체제 구조와 원리](https://github.com/GraceKim527/TIL_Grace/blob/main/OS/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C%20%EA%B5%AC%EC%A1%B0%EC%99%80%20%EC%9B%90%EB%A6%AC.md)
 
+## Pygorithm
+* [그리디 알고리즘 with Python](https://github.com/GraceKim527/TIL_Grace/blob/main/Algorithm/Greedy.md)
+* [구현 알고리즘 with Python](https://github.com/GraceKim527/TIL_Grace/blob/main/Algorithm/Implementation.md)
+* [BFS/DFS with Python](https://github.com/GraceKim527/TIL_Grace/blob/main/Algorithm/bfs_dfs.md)
+* [이진 탐색 with Python](https://github.com/GraceKim527/TIL_Grace/blob/main/Algorithm/Binary_Search.md)
+* [에라토스테네스의 체 with Python](https://github.com/GraceKim527/TIL_Grace/blob/main/Algorithm/Sieve_of_Eratosthenes.md)
+* [정렬 알고리즘 with Python](https://github.com/GraceKim527/TIL_Grace/blob/main/Algorithm/sort.md)
+* [코딩테스트용 Python Tip](https://github.com/GraceKim527/TIL_Grace/blob/main/Algorithm/python_tip.md)
+
 ## idea
 * [외부 사이트 팁](https://github.com/GraceKim527/TIL_Grace/blob/main/idea/link.md)
+
+## swift
+* [Swift 프로그래밍 문법](https://github.com/GraceKim527/TIL_Grace/blob/main/swift/%EC%8A%A4%EC%9C%84%ED%94%84%ED%8A%B8%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20%EA%B8%B0%EC%B4%88%EB%AC%B8%EB%B2%95.md)
